@@ -1,0 +1,13 @@
+= Colbyn's Music Notes
+
+// .Locations
+// ****
+// |===
+// | Source Code | https://github.com/colbyn/colbyns-math-notes/[github.com/colbyn/colbyns-math-notes]
+// | Online Edition | https://colbyn.github.io/colbyns-math-notes//[colbyn.github.io/colbyns-math-notes/]
+// |===
+// ****
+
+
+
+

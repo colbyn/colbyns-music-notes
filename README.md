@@ -1,13 +1,14 @@
-# Notes
+# Colbyn's Music Notes
 
-## Compiling the PDF
+## Compiling
 
 ```shell
 $ ./scripts/build.sh
 ```
 
-Results in `./output/main.pdf`. 
+## Dependencies
 
-## [Pre-built PDF](./release/main.pdf)
-A Pre-built PDF *may be* available under [./release/main.pdf](./release/main.pdf)
-
+```shell
+# required by asciidoctor-mathematical
+brew install glib gdk-pixbuf cairo pango cmake
+```

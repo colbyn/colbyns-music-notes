@@ -1,15 +1,33 @@
-function errorlog {
-    echo "\033[1;31m\033[4m$1\033[0m"
-}
+set -e
 
-mkdir -p output
-cd source
+# SETUP
+SRC_DIR='./source'
+OUT_DIR='./output'
+OUT_DIR_WEB='./output/web'
 
-xelatex --interaction=batchmode -output-directory ../output main.tex >/dev/null
-STATUS=$?
+mkdir -p $OUT_DIR
+mkdir -p $OUT_DIR_WEB
 
-if [ "$STATUS" -ne "0" ]; then
-    errorlog "BUILD FAILED:"
-    xelatex --interaction=nonstopmode -output-directory ../output main.tex
-    errorlog "END OF ERROR MESSAGE"
+BUILD_PDF=false
+BUILD_HTML=true
+
+# OLD VERSION FOR COPYING STYLESHEET
+# if $BUILD_HTML; then
+# echo "builing html"
+# mkdir -p $OUT_DIR/config
+# rsync --checksum config/theme.css output/theme.css
+# bundle exec asciidoctor --base-dir=.  -a linkcss \
+#     -D $OUT_DIR \
+#     $SRC_DIR/*.adoc
+# fi
+
+if $BUILD_HTML; then
+echo "builing html"
+mkdir -p $OUT_DIR/config
+bundle exec asciidoctor \
+    -r asciidoctor-diagram \
+    -D $OUT_DIR \
+    -R $SRC_DIR \
+    '**/*.adoc'
 fi
+
